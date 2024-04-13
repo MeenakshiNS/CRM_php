@@ -112,9 +112,11 @@
                         $adminremark = "UPDATE ticket SET admin_remark='$remark',status='closed' WHERE id='$id' ";
                         $queryrun=mysqli_query($conn,$adminremark);
                         if($queryrun){
-                          echo '<script>alert("Ticket has been updated.")</script>';
+                          // echo '<script>alert("Ticket has been updated.")</script>';
+                          echo "ticket updated";
                         }else{
-                                         echo "<script>alert('remark not updated')</script>";
+                                        //  echo "<script>alert('remark not updated')</script>";
+                                        echo "ticket not updated";
                         }
                       }
 

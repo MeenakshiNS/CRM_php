@@ -1,5 +1,6 @@
 <?php include_once('./dbconnection.php');
 $id= $_GET['id'];  
+echo $id;
 $query="SELECT * FROM user WHERE id='$id'";
 $query_run=mysqli_query( $conn, $query );
 $query_array=mysqli_fetch_assoc($query_run);

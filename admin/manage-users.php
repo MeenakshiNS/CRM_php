@@ -106,10 +106,11 @@
                                                           $query="SELECT * FROM user";
                                                           $query_run=mysqli_query( $conn, $query );
                                                           $query_array=mysqli_fetch_assoc($query_run);
+                                                        //   print_r($query_array);
                                                           ?>
-                                                         <a href="./edit-user.php?id=<?php echo $query_array['id']?>"><button type="button" class="btn btn-success btn-xs btn-mini">Edit </button></a> 
+                                                         <a href="./edit-user.php?id=<?php echo $row['id']?>"><button type="button" class="btn btn-success btn-xs btn-mini">Edit </button></a> 
 
-                                                           <a onclick="return confirm('Are you sure you wanted to delete <?php echo $row['name']?>☠️☠️ ??')" href="./delete-user.php?id=<?php echo $query_array['id']?>"><button type="button" class="btn btn-danger btn-xs btn-mini">Delete </button></a>
+                                                           <a onclick="return confirm('Are you sure you wanted to delete <?php echo $row['name']?>☠️☠️ ??')" href="./delete-user.php?id=<?php echo $row['id']?>"><button type="button" class="btn btn-danger btn-xs btn-mini">Delete </button></a>
                                                            </form>
                                                           </td>
                                                     </tr>

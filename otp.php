@@ -37,12 +37,14 @@
 
     // Concatenate the OTP values into a single string
     $entered_otp = implode('', $otp_entered);
+    echo $entered_otp;
         
         // Retrieve the stored OTP from the database
-        $sql = "SELECT otp FROM user";
+        $sql = "SELECT otp FROM user WHERE otp='$entered_otp'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         $otp_stored = $row['otp'];
+        echo $otp_stored;
     
         // Verify if the entered OTP matches the stored OTP
         if($entered_otp == $otp_stored){

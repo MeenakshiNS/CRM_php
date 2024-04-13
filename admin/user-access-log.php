@@ -69,9 +69,9 @@
                       <th style="width:10%">Email </th>
                              <th style="width:18%">Login date | Login Time </th>
                     <th style="width:10%" data-hide="phone,tablet">IP</th>
-                    <th style="width:15%">Mac id</th>
+                    <!-- <th style="width:15%">Mac id</th>
                     <th style="width:12%" data-hide="phone,tablet">City </th>
-                    <th style="width:10%">Country </th>
+                    <th style="width:10%">Country </th> -->
                   </tr>
                 </thead>
                 <tbody>
@@ -89,10 +89,10 @@
                                <td class="v-align-middle"><?php echo  $rows['email']; ?></td>
                                <td class="v-align-middle"><?php echo  $rows['logindate']; ?> | <?php echo  $rows['logintime']; ?> </td>
                     <td class="v-align-middle"><span class="muted"><?php echo  $rows['ip']; ?></span></td>
-                    <td><span class="muted"><?php echo  $rows['mac']; ?></span></td>
+                    <!-- <td><span class="muted"><?php echo  $rows['mac']; ?></span></td>
                     <td class="v-align-middle">city
                     </td>
-                      <td>country</td>
+                      <td>country</td> -->
                   </tr>
                   <?php } }?>
                 </tbody>

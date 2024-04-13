@@ -176,12 +176,13 @@ $pending_num=mysqli_num_rows($pendings);
 						<span class="item-title">Overall Quotes</span> <span class="item-count animate-number semi-bold" data-value="<?php echo $overall_quotes_num?>" data-animation-duration="700">0</span>
 					  </div>
                     </div>
+
                     <div class="widget-stats">
                       <div class="wrapper transparent">
-                  
 						<span class="item-title">Todays Quotes's</span> <span class="item-count animate-number semi-bold" data-value="<?php echo $overall_quotes_num_today?>" data-animation-duration="700">0</span> 
 					  </div>
                     </div>
+
                     <div class="widget-stats ">
                       <div class="wrapper last"> 
                      
@@ -232,117 +233,52 @@ $pending_num=mysqli_num_rows($pendings);
 	
         </div>     
 		
-	 </div>
-	  <!-- END DASHBOARD TILES -->
-           <!-- START DASHBOARD CHART -->
+	
+<?php
+ 
+$dataPoints = array( 
+	array("label"=>"Overall Quotes", "y"=> $overall_quotes_num),
+	array("label"=>"Todays Quotes's", "y"=>$overall_quotes_num_today),
+	array("label"=>"Not replied", "y"=>$not_replied_num),
+	array("label"=>"All Tickets", "y"=>$totaltickets_num),
+	array("label"=>"Pending Tickets", "y"=>$pending_num)
+)
+ 
+?>
 
+<script>
+window.onload = function() {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "dark2",
+	animationEnabled: true,
+	title: {
+		text: "CRM tickets and quotes"
+	},
+	data: [{
+		type: "funnel",
+		indexLabel: "{label} - {y}",
+		yValueFormatString: "#,##0",
+		showInLegend: true,
+		legendText: "{label}",
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+}
+</script>
 
+<div id="chartContainer" style="height: 370px; width: 100%;margin-top: 150px"></div><br />
 
-                    <div class="col-lg-12" style="min-height:280px;">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> All User Visit </h3>
-								
-								<script type="text/javascript">
-								var visitorsCount = [];
-								var myCat =[];
-								</script>
-								
-										<script type="text/javascript">
-										// var myKey = "Day " + '<?php echo $i; ?>';
-										
-										// myCat.push(myKey);
-										</script>
-								
-											
-											
-										
-									<script type="text/javascript">
-									visitorsCount.push(value);
-									</script>
-								
-									
-								
-										
-							
-								<script type="text/javascript">
-								var d = new Date();
-								var month = new Array();
-								month[0] = "January";
-								month[1] = "February";
-								month[2] = "March";
-								month[3] = "April";
-								month[4] = "May";
-								month[5] = "June";
-								month[6] = "July";
-								month[7] = "August";
-								month[8] = "September";
-								month[9] = "October";
-								month[10] = "November";
-								month[11] = "December";
-								var n = month[d.getMonth()];
-								$(function () {
-								$('#container').highcharts({
-									title: {
-										text: 'Daily Visitors Chart of ' + n,
-										x: -20 //center
-									},
-									subtitle: {
-										text: '',
-										x: -20
-									},
-									xAxis: {
-										categories: myCat
-									},
-									yAxis: {
-										min:0,
-										title: {
-											text: 'Visitors Count'
-										},
-										plotLines: [{
-											value: 0,
-											width: 1,
-											color: '#808080'
-										}]
-									},
-									tooltip: {
-										valueSuffix: ' Users'
-									},
-									legend: {
-										layout: 'vertical',
-										align: 'right',
-										verticalAlign: 'middle',
-										borderWidth: 0
-									},
-									series: [{
-										name: 'visitorsCount',
-										data: visitorsCount
-									}]
-								});
-							});
-								</script>
-								<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-								
-                            </div>
-                            <div class="panel-body">
-                                <div id="morris-line-chart"></div>
-                                <div class="text-right">
-                                    <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-             
-                    <!-- END DASHBOARD CHART --> 
-			
-               
-          
-		  </div></div>
-<!-- BEGIN CHAT --> 
-	  
 </div>
+	  
+	  
+	  
+	  </div>
+	  
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
 <script src="../assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script src="../assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 <script src="../assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script>
